@@ -33,6 +33,14 @@ function getData() {
     成功ならpropertyDataをPromise.resolveで返します。
     失敗ならエラーメッセージをPromise.rejectで返します。
   */
+ return fetchData().then((response) => {
+  if (response.status === 403){
+    return Promise.resolve(data);
+  } else {
+    return Promise.reject(data.error);
+  }
+ })
+  
 }
 
 
@@ -41,6 +49,13 @@ function fetchData() {
   /* 
     fetchを使ってデータを取得します。
   */
+  const response = fetch(url, { method: "get"})
+  const json = response.json();
+  if (response.status === 200){
+    return Promise.resolve(json);
+  } else {
+    return Promise.reject(json.error);
+  }
 }
 
 {
