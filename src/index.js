@@ -40,22 +40,23 @@ function getData() {
     return Promise.reject(data.error);
   }
  })
-  
 }
-
 
 function fetchData() {
   const url = `${endpoint}/properties/1`
   /* 
     fetchを使ってデータを取得します。
   */
-  const response = fetch(url, { method: "get"})
-  const json = response.json();
-  if (response.status === 200){
-    return Promise.resolve(json);
-  } else {
-    return Promise.reject(json.error);
-  }
+  //MIMEtypeでapplication/json, initオブジェクトの構文を用意する
+  return fetch(url, {
+    method: "GET",
+    mode: 'cors',
+    cache: 'default',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  })  
 }
 
 {
