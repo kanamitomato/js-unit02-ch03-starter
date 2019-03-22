@@ -42,12 +42,12 @@ function getData() {
  })
 }
 
-function fetchData() {
-  const url = `${endpoint}/properties/1`
+function fetchData(url) {
+  fetchData(`${endpoint}/properties/id:`)
   /* 
     fetchを使ってデータを取得します。
   */
-  //MIMEtypeでapplication/json, initオブジェクトの構文を用意する
+  //MIMEtypeを使って, initオブジェクトの構文を用意する
   return fetch(url, {
     method: "GET",
     mode: 'cors',
