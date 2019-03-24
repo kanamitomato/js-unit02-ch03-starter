@@ -42,8 +42,8 @@ function getData() {
  })
 }
 
-function fetchData(url) {
-  fetchData(`${endpoint}/properties/id:`)
+function fetchData(id) {
+  fetchData(`${endpoint}/properties/${id}`)
   /* 
     fetchを使ってデータを取得します。
   */
