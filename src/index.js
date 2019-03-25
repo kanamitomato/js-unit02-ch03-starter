@@ -42,7 +42,7 @@ function getData() {
  })
 }
 
-function fetchData(id) {
+function fetchData(id = userNo) {
   fetchData(`${endpoint}/properties/${id}`)
   /* 
     fetchを使ってデータを取得します。
