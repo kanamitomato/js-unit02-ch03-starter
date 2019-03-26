@@ -34,16 +34,19 @@ function getData() {
     失敗ならエラーメッセージをPromise.rejectで返します。
   */
  return fetchData().then((response) => {
-  if (response.status === 403){
-    return Promise.resolve(data);
+   const json = response.json()
+  if (response.status !== 200){
+    return json.then((data) => {
+      return Promise.reject(new Error(message));
+    })
   } else {
-    return Promise.reject(data.error);
+    return Promise.resolve(data);    
   }
  })
 }
 
-function fetchData(id = userNo) {
-  fetchData(`${endpoint}/properties/${id}`)
+function fetchData(id = 1) {
+  const url = `${endpoint}/properties/${id}`
   /* 
     fetchを使ってデータを取得します。
   */
